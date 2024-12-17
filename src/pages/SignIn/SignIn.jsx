@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 
 import loginLottieJSON from '../../assets/lottie/login.json'
 import AuthContext from '../../context/AuthContext';
+import SocialLogin from '../shared/SocialLogin';
 
 const SignIn = () => {
 
@@ -55,6 +56,7 @@ const SignIn = () => {
 					<button className="btn bg-gradient-to-t from-teal-950 to-rose-900 text-white">Login</button>
 					</div>
 				</form>
+				<SocialLogin></SocialLogin>
 				</div>
 			</div>
 			</div>
