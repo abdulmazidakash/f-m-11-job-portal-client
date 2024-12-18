@@ -1,9 +1,14 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const JobApply = () => {
 
-	const id = useParams();
+	const {user} = useAuth();
+	const navigate = useNavigate();
+
+	const {id }= useParams();
 	console.log(id);
 
 	const handleJobApply = e =>{
@@ -14,11 +19,40 @@ const JobApply = () => {
 		const github = form.github.value;
 		const resume = form.resume.value;
 
-		console.log(linkedIn, github, resume);
+		// console.log(linkedIn, github, resume);
+
+		const jobsApplication = {
+			job_id: id,
+			applicant_email: user.email,
+			linkedIn,
+			github,
+			resume
+
+		}
+
+		fetch('http://localhost:5000/job-applications', {
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify(jobsApplication)
+		})
+			.then(res => res.json())
+			.then(data =>{
+				// console.log(data);
+				if(data.insertedId){
+					Swal.fire({
+						title: "Success!",
+						icon: "success",
+						draggable: true
+					  });
+				}
+				navigate('/myApplications')
+			})
 	}
 	return (
 		<div>
-			<div className="flex items-center justify-center py-8 bg-gray-100 rounded-lg my-8">
+			<div className="flex items-center justify-center py-8 bg-rose-100 rounded-lg my-8">
       <form
         onSubmit={handleJobApply}
         className="w-full max-w-sm bg-white p-6 rounded-lg shadow-md"

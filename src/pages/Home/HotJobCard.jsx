@@ -15,7 +15,7 @@ const HotJobCard = ({job}) => {
 				<div className="flex justify-between items-start mb-4">
 					<div className="flex items-center gap-3">
 					{/* কোম্পানি লোগো */}
-					<div className="bg-rose-200 text-white rounded-lg p-2">
+					<div className="bg-cyan-200 text-white rounded-lg p-2">
 						{/* <BsLightningCharge size={24} /> */}
 						<img src={company_logo} className='w-14' alt="" />
 					</div>
@@ -61,7 +61,7 @@ const HotJobCard = ({job}) => {
 
 				{/* বেতন এবং বাটন */}
 				<div className="flex justify-between items-center">
-					<div className="text-sm  font-semibold text-blue-500">salary: ${salaryRange.max} - ${salaryRange.min}</div>
+					<div className="text-sm  font-semibold text-blue-500">Salary: ${salaryRange.max} - ${salaryRange.min}</div>
 	
 					<Link to={`jobs/${_id}`}>
 						<button className="btn btn-sm btn-accent">Job Details</button>
