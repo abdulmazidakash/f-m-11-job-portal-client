@@ -57,7 +57,7 @@ const MyApplication = () => {
 							</div>
 							</td>
 							<td>
-							Zemlak, Daniel and Leannon
+							{job.company}
 							<br />
 							<span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
 							</td>
