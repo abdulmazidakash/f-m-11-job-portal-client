@@ -46,7 +46,7 @@ const Navbar = () => {
 					</div>
 					<ul
 						tabIndex={0}
-						className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+						className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow font-semibold">
 						{links}
 					</ul>
 					</div>
@@ -57,14 +57,14 @@ const Navbar = () => {
 					
 				</div>
 				<div className="navbar-center hidden lg:flex">
-					<ul className="menu menu-horizontal px-1">
+					<ul className="menu menu-horizontal px-1 font-semibold">
 					{links}
 					</ul>
 				</div>
 				<div className="navbar-end font-semibold gap-2">
 					{
 						 user? <>
-						<button onClick={handleSignOut} className="btn">Log Out</button>
+						<button onClick={handleSignOut} className="btn bg-gradient-to-br from-rose-700 to-cyan-900 text-white">Log Out</button>
 						 </> : <>
 						<Link to='/register'><button className='btn btn-accent'>Register</button></Link>
 						<Link to='/signIn'>
