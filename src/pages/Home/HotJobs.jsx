@@ -9,7 +9,7 @@ const HotJobs = () => {
     console.log(jobs);
 
     useEffect(() => {
-        fetch('http://localhost:5000/jobs')
+        fetch('https://milestone-11-job-portal-server.vercel.app/jobs')
             .then(res => res.json())
             .then(data => {
                 setJobs(data);

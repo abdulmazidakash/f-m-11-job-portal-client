@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import { Typewriter } from 'react-simple-typewriter';
 import axios from 'axios';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const MyApplication = () => {
 
 	const {user } = useAuth();
 	const [jobs, setJobs] = useState([]);
+
+	const axiosSecure = useAxiosSecure();
 	
 	useEffect(()=>{
 
 		// if(user?.email){
-		// 	fetch(`http://localhost:5000/job-application?email=${user.email}`)
+		// 	fetch(`https://milestone-11-job-portal-server.vercel.app/job-application?email=${user.email}`)
 		// 	.then(res => res.json())
 		// 	.then(data => setJobs(data))
 		// 	.catch(err =>{
@@ -19,12 +22,18 @@ const MyApplication = () => {
 		// 	})
 		// }
 
+		// if(user?.email){
+		// 	axios.get(`https://milestone-11-job-portal-server.vercel.app/job-application?email=${user.email}`, {
+		// 		withCredentials: true,
+		// 	})
+		// 		// .then(res => console.log(setJobs(res.data)))
+		// 		.then(res => setJobs(res.data))
+		// 	}
+
 		if(user?.email){
-			axios.get(`http://localhost:5000/job-application?email=${user.email}`, {
-				withCredentials: true,
-			})
-				.then(res => console.log(setJobs(res.data)))
-			}
+			axiosSecure.get(`/job-application?email=${user.email}`)
+			.then(res => setJobs(res.data))
+		}
 		}
 		, [user?.email])
 	return (
