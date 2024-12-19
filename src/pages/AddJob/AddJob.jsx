@@ -1,7 +1,14 @@
 import { object } from 'motion/react-client';
+import { stringify } from 'postcss';
 import React from 'react';
+import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const AddJob = () => {
+
+	const {user} = useAuth();
+	const navigate = useNavigate();
 
 	const handleAddJob = e =>{
 		e.preventDefault();
@@ -14,6 +21,30 @@ const AddJob = () => {
 		console.log(min, max, currency, newJob);
 		newJob.salaryRange = { min, max, currency};
 		console.log(newJob);
+		newJob.requirements = newJob.requirements.split('\n');
+		newJob.responsibility = newJob.responsibility.split('\n');
+		console.log(newJob);
+
+
+		fetch('http://localhost:5000/jobs', {
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify(newJob)
+		})
+			.then(res => res.json())
+			.then(data =>{
+				// console.log(data);
+				if(data.insertedId){
+						Swal.fire({
+							title: "Success!",
+							icon: "success",
+							draggable: true
+							});
+					}
+					navigate('/myPostedJobs')
+			})
 	}
 	return (
 		<div>
@@ -22,6 +53,9 @@ const AddJob = () => {
         onSubmit={handleAddJob}
         className="bg-white shadow-md rounded-lg p-6 w-full max-w-4xl"
       >
+		 <h2 className="text-2xl font-bold text-gray-700 text-center">
+            Add Job Information
+          </h2>
         {/* ফর্ম হেডার */}
         <div className="flex items-center gap-4 mb-6">
           {/* <img
@@ -29,9 +63,7 @@ const AddJob = () => {
             alt="Company Logo"
             className="w-16 h-16 rounded-full"
           /> */}
-          <h2 className="text-2xl font-bold text-gray-700">
-            Add Job Information
-          </h2>
+         
         </div>
 
         {/* ফর্ম ইনপুটস */}
@@ -74,6 +106,20 @@ const AddJob = () => {
             />
           </div>
 
+		   {/* Application Deadline */}
+		   <div>
+            <label className="block text-gray-600 mb-1">
+              Application Deadline
+            </label>
+            <input
+              type="date"
+              name="applicationDeadline"
+            //   value={jobData.applicationDeadline}
+            //   onChange={handleChange}
+              className="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+            />
+          </div>
+
 		  		{/*hr name*/}
 				  <div>
             <label className="block text-gray-600 mb-1">HR Name</label>
@@ -93,6 +139,8 @@ const AddJob = () => {
             <input
               type="text"
               name="hr_email"
+			  defaultValue={user?.email}
+			  disabled
             //   value={jobData.title}
             //   onChange={handleChange}
               className="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
@@ -118,6 +166,7 @@ const AddJob = () => {
             <label className="block text-gray-600 mb-1">Job Type</label>
             <select
               name="jobType"
+			defaultValue="Job Type"
             //   value={jobData.jobType}
             //   onChange={handleChange}
               className="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
@@ -133,6 +182,7 @@ const AddJob = () => {
             <label className="block text-gray-600 mb-1">Pick a job Field</label>
             <select
               name="jobType"
+			  defaultValue='Pick a job Field'
             //   value={jobData.jobType}
             //   onChange={handleChange}
               className="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
@@ -170,6 +220,7 @@ const AddJob = () => {
           <div>
             <label className="block text-gray-600 mb-1">Currency</label>
             <select
+			defaultValue='Currency'
               name="currency"
             //   value={jobData.jobType}
             //   onChange={handleChange}

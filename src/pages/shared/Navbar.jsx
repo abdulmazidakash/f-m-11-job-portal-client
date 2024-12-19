@@ -8,6 +8,7 @@ import jobIcon from '../../assets/job-portal-logo.png'
 const Navbar = () => {
 
 	const {user, signOutUser } = useContext(AuthContext);
+	// console.log(user);
 
 	const handleSignOut = ()=>{
 		
@@ -24,6 +25,7 @@ const Navbar = () => {
 		<li><NavLink to='/'>Home</NavLink></li>
 		<li><NavLink to='/myApplications'>My Application</NavLink></li>
 		<li><NavLink to='/addJob'>Add Job</NavLink></li>
+		<li><NavLink to='/myPostedJobs'>My Posted Jobs</NavLink></li>
 	</>
 	return (
 		<div>
@@ -64,7 +66,9 @@ const Navbar = () => {
 				<div className="navbar-end font-semibold gap-2">
 					{
 						 user? <>
+						<button className='btn btn-success text-white'> <p>{user?.email}</p></button>
 						<button onClick={handleSignOut} className="btn bg-gradient-to-br from-rose-700 to-cyan-900 text-white">Log Out</button>
+						
 						 </> : <>
 						<Link to='/register'><button className='btn btn-accent'>Register</button></Link>
 						<Link to='/signIn'>

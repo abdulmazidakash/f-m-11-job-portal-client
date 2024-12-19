@@ -7,17 +7,24 @@ const MyApplication = () => {
 	const [jobs, setJobs] = useState([]);
 	
 	useEffect(()=>{
-		fetch(`http://localhost:5000/job-application?email=${user?.email}`)
+
+		if(user?.email){
+			fetch(`http://localhost:5000/job-application?email=${user.email}`)
 			.then(res => res.json())
 			.then(data => setJobs(data))
-	}, [user.email])
+			.catch(err =>{
+				console.log(err.message);
+			})
+	}
+		}
+		, [user?.email])
 	return (
 		<div>
 			<button className='btn btn-success btn-outline my-8'>my application: {jobs.length}</button>
 			<div className="overflow-x-auto border-2 border-gray-300 rounded-lg my-8">
 				<table className="table">
 					{/* head */}
-					<thead>
+					<thead className='bg-gradient-to-br from-sky-700 to-teal-700 text-white'>
 					<tr>
 						<th>
 						<label>
