@@ -4,6 +4,7 @@ import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { Typewriter } from 'react-simple-typewriter';
 
 const AddJob = () => {
 
@@ -48,14 +49,27 @@ const AddJob = () => {
 	}
 	return (
 		<div>
+      <h1 className="text-4xl font-bold text-center my-8">
+                     Welcome to{' '}
+                     <span className="text-cyan-500">
+                         <Typewriter
+                             words={['Add Job Information!']}
+                             loop={Infinity}
+                             cursor
+                             cursorStyle="|"
+                             typeSpeed={70}
+                             deleteSpeed={50}
+                             delaySpeed={1000}
+                         />
+                     </span>
+                 </h1>
 			<div className="bg-gray-100  flex items-center justify-center p-4 my-8 rounded-lg">
+        
       <form
         onSubmit={handleAddJob}
-        className="bg-white shadow-md rounded-lg p-6 w-full max-w-4xl"
+        className="bg-white shadow-md rounded-lg p-6 w-full max-w-4xl font-semibold"
       >
-		 <h2 className="text-2xl font-bold text-gray-700 text-center">
-            Add Job Information
-          </h2>
+		  
         {/* ফর্ম হেডার */}
         <div className="flex items-center gap-4 mb-6">
           {/* <img
@@ -177,21 +191,6 @@ const AddJob = () => {
             </select>
           </div>
 
-          {/* Job Field */}
-          <div>
-            <label className="block text-gray-600 mb-1">Pick a job Field</label>
-            <select
-              name="jobType"
-			  defaultValue='Pick a job Field'
-            //   value={jobData.jobType}
-            //   onChange={handleChange}
-              className="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
-            >
-              <option value="engineering">Engineering</option>
-              <option value="marketing">Marketing</option>
-              <option value="finance">Finance</option>
-            </select>
-          </div>
 
           {/* Salary Range */}
           <div>
@@ -234,6 +233,21 @@ const AddJob = () => {
         </div>
 
 
+          {/* Job Field */}
+          <div>
+            <label className="block text-gray-600 mb-1">Pick a job Field</label>
+            <select
+              name="jobType"
+			  defaultValue='Pick a job Field'
+            //   value={jobData.jobType}
+            //   onChange={handleChange}
+              className="w-full border px-3 py-2 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+            >
+              <option value="engineering">Engineering</option>
+              <option value="marketing">Marketing</option>
+              <option value="finance">Finance</option>
+            </select>
+          </div>
 
 
         {/* Description */}
@@ -277,10 +291,10 @@ const AddJob = () => {
 
 
         {/* সাবমিট বাটন */}
-        <div className="flex justify-end mt-6">
+        <div className="mt-6">
           <button
             type="submit"
-            className="btn btn-success hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300"
+            className="btn btn-success hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg transition duration-300 w-full"
           >
             Add Job
           </button>

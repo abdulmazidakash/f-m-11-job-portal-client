@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import { Link } from 'react-router-dom';
+import { Typewriter } from 'react-simple-typewriter';
 
 const MyPostedJobs = () => {
 
@@ -16,7 +17,21 @@ const MyPostedJobs = () => {
 		}, [user?.email])
 	return (
 		<div>
-			<button className='btn btn-outline btn-success my-8'>My posted jobs: {jobs.length}</button>
+			<h1 className="text-4xl font-bold text-center my-8">
+								 Welcome to{' '}
+								 <span className="text-cyan-500">
+									 <Typewriter
+										 words={['My Posted Jobs!']}
+										 loop={Infinity}
+										 cursor
+										 cursorStyle="|"
+										 typeSpeed={70}
+										 deleteSpeed={50}
+										 delaySpeed={1000}
+									 />
+								 </span>
+							 </h1>
+			<button className='btn btn-outline btn-success'>My posted jobs: {jobs.length}</button>
 			<div className="overflow-x-auto my-6 border-2 border-gray-200 rounded-lg">
 				<table className="table">
 					{/* head */}

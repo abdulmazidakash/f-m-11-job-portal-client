@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
+import { Typewriter } from 'react-simple-typewriter';
 
 const MyApplication = () => {
 
@@ -20,7 +21,22 @@ const MyApplication = () => {
 		, [user?.email])
 	return (
 		<div>
-			<button className='btn btn-success btn-outline my-8'>my application: {jobs.length}</button>
+
+			<h1 className="text-4xl font-bold text-center my-8">
+								 Welcome to{' '}
+								 <span className="text-cyan-500">
+									 <Typewriter
+										 words={['My Job Application!']}
+										 loop={Infinity}
+										 cursor
+										 cursorStyle="|"
+										 typeSpeed={70}
+										 deleteSpeed={50}
+										 delaySpeed={1000}
+									 />
+								 </span>
+							 </h1>
+			<button className='btn btn-success btn-outline mt-8'>My Application: {jobs.length}</button>
 			<div className="overflow-x-auto border-2 border-gray-300 rounded-lg my-8">
 				<table className="table">
 					{/* head */}
