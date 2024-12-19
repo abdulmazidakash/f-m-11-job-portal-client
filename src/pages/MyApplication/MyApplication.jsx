@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import { Typewriter } from 'react-simple-typewriter';
+import axios from 'axios';
 
 const MyApplication = () => {
 
@@ -9,14 +10,21 @@ const MyApplication = () => {
 	
 	useEffect(()=>{
 
+		// if(user?.email){
+		// 	fetch(`http://localhost:5000/job-application?email=${user.email}`)
+		// 	.then(res => res.json())
+		// 	.then(data => setJobs(data))
+		// 	.catch(err =>{
+		// 		console.log(err.message);
+		// 	})
+		// }
+
 		if(user?.email){
-			fetch(`http://localhost:5000/job-application?email=${user.email}`)
-			.then(res => res.json())
-			.then(data => setJobs(data))
-			.catch(err =>{
-				console.log(err.message);
+			axios.get(`http://localhost:5000/job-application?email=${user.email}`, {
+				withCredentials: true,
 			})
-	}
+				.then(res => console.log(setJobs(res.data)))
+			}
 		}
 		, [user?.email])
 	return (

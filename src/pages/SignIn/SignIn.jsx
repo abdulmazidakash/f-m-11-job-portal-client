@@ -5,6 +5,8 @@ import loginLottieJSON from '../../assets/lottie/login.json'
 import AuthContext from '../../context/AuthContext';
 import SocialLogin from '../shared/SocialLogin';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { Typewriter } from 'react-simple-typewriter';
 
 const SignIn = () => {
 
@@ -25,24 +27,43 @@ const SignIn = () => {
 
 		signInUser(email, password)
 			.then(result =>{
-				console.log('sign in user', result.user);
+				console.log('sign in user', result.user.email);
+				const user = {email: email};
+				axios.post('http://localhost:5000/jwt', user, {
+					withCredentials: true
+				})
+					.then(res =>{
+						console.log(res.data);
+					})
 			})
-			navigate(from)
+			// navigate(from)
 			.catch(error =>{
 				console.log(error.message);
 			})
 	}
 	return (
 		<div>
-		<div className="hero bg-base-200 min-h-screen">
+			<h1 className='text-4xl font-bold text-center my-8 text-cyan-700'>
+				<Typewriter
+				words={['Login Now!']}
+				cursor
+				cursorStyle={'|'}
+				loop={Infinity}
+				typeSpeed={70}
+				delaySpeed={1000}
+				deleteSpeed={50}
+
+				></Typewriter>
+			</h1>
+		<div className="hero bg-base-200 min-h-screen my-8 rounded-lg">
 			<div className="hero-content flex-col lg:flex-row-reverse lg:gap-32">
 				<div className="text-center lg:text-left rounded-lg">
-				<Lottie  animationData={loginLottieJSON}></Lottie>
+				<Lottie className='rounded-lg'  animationData={loginLottieJSON}></Lottie>
 				
 				</div>
 				<div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
 				<form onSubmit={handleSignIn} className="card-body">
-				<h1 className="text-3xl font-bold text-center">Login now!</h1>
+				
 					<div className="form-control">
 					<label className="label">
 						<span className="label-text">Email</span>

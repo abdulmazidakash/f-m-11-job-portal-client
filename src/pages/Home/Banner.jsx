@@ -31,7 +31,7 @@ const Banner = () => {
 					animate={{color: ['#ecff33', '#33ffe3', '#ff6133']}}
 					transition={{duration: 1.5, repeat: Infinity}}
 					>Jobs</motion.span> for you!</motion.h1>
-					<p className="py-6">
+					<p className="py-6 font-semibold">
 						Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
 						quasi. In deleniti eaque aut repudiandae et a id nisi.
 					</p>
