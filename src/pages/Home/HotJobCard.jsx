@@ -63,7 +63,7 @@ const HotJobCard = ({job}) => {
 				<div className="flex justify-between items-center">
 					<div className="text-sm  font-semibold text-blue-500">Salary: ${salaryRange.max} - ${salaryRange.min}</div>
 	
-					<Link to={`jobs/${job._id}`}>
+					<Link to={`jobs/${_id}`}>
 						<button className="btn btn-sm btn-accent">Job Details</button>
 					</Link>
 				</div>
