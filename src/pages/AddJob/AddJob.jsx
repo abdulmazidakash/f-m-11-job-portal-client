@@ -20,14 +20,14 @@ const AddJob = () => {
 		console.log(initialData);
 		const {min, max, currency, ...newJob} = initialData;
 		console.log(min, max, currency, newJob);
-		newJob.salaryRange = { min, max, currency};
+		newJob.salaryRange = { min: parseInt(min), max: parseInt(max), currency};
 		console.log(newJob);
 		newJob.requirements = newJob.requirements.split('\n');
 		newJob.responsibility = newJob.responsibility.split('\n');
 		console.log(newJob);
 
 
-		fetch('https://milestone-11-job-portal-server.vercel.app/jobs', {
+		fetch('http://localhost:5000/jobs', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'

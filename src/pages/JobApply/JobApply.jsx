@@ -30,7 +30,7 @@ const JobApply = () => {
 
 		}
 
-		fetch('https://milestone-11-job-portal-server.vercel.app/job-applications', {
+		fetch('http://localhost:5000/job-applications', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'

@@ -10,6 +10,11 @@ import MyApplication from "../pages/MyApplication/MyApplication";
 import AddJob from "../pages/AddJob/AddJob";
 import MyPostedJobs from "../pages/MyPostedJobs/MyPostedJobs";
 import ViewApplications from "../pages/ViewApplications/ViewApplications";
+import Jobs from "../pages/Jobs";
+
+
+
+
 
 
   const router = createBrowserRouter([
@@ -23,11 +28,15 @@ import ViewApplications from "../pages/ViewApplications/ViewApplications";
 			element: <Home></Home>,
 		},
 		{
+			path: '/jobs',
+			element: <Jobs></Jobs>,
+		},
+		{
 			path: '/jobs/:id',
 			element: <PrivateRoute>
 				<JobDetails></JobDetails>
 			</PrivateRoute>,
-			loader: ({params})=> fetch(`https://milestone-11-job-portal-server.vercel.app/jobs/${params.id}`)
+			loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
 		},
 		{
 			path: '/jobApply/:id',
@@ -56,7 +65,7 @@ import ViewApplications from "../pages/ViewApplications/ViewApplications";
 			element: <PrivateRoute>
 				<ViewApplications></ViewApplications>
 			</PrivateRoute>,
-			loader: ({params})=> fetch(`https://milestone-11-job-portal-server.vercel.app/job-applications/jobs/${params.job_id}`)
+			loader: ({params})=> fetch(`http://localhost:5000/job-applications/jobs/${params.job_id}`)
 		},
 		{
 			path: '/register',

@@ -10,7 +10,7 @@ const MyPostedJobs = () => {
 
 	useEffect(()=>{
 		if(user?.email){
-			fetch(`https://milestone-11-job-portal-server.vercel.app/jobs?email=${user.email}`)
+			fetch(`http://localhost:5000/jobs?email=${user.email}`)
 			.then(res => res.json())
 			.then(data => setJobs(data))
 	}
