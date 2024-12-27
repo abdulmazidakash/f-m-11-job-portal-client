@@ -14,7 +14,7 @@ const MyApplication = () => {
 	useEffect(()=>{
 
 		// if(user?.email){
-		// 	fetch(`http://localhost:5000/job-application?email=${user.email}`)
+		// 	fetch(`https://milestone-11-job-portal-server.vercel.app/job-application?email=${user.email}`)
 		// 	.then(res => res.json())
 		// 	.then(data => setJobs(data))
 		// 	.catch(err =>{
@@ -23,7 +23,7 @@ const MyApplication = () => {
 		// }
 
 		// if(user?.email){
-		// 	axios.get(`http://localhost:5000/job-application?email=${user.email}`, {
+		// 	axios.get(`https://milestone-11-job-portal-server.vercel.app/job-application?email=${user.email}`, {
 		// 		withCredentials: true,
 		// 	})
 		// 		// .then(res => console.log(setJobs(res.data)))

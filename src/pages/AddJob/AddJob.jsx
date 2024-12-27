@@ -27,7 +27,7 @@ const AddJob = () => {
 		console.log(newJob);
 
 
-		fetch('http://localhost:5000/jobs', {
+		fetch('https://milestone-11-job-portal-server.vercel.app/jobs', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json'

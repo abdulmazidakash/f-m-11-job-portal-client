@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const axiosInstance = axios.create({
-	baseURL: 'http://localhost:5000',
+	baseURL: 'https://milestone-11-job-portal-server.vercel.app',
 	withCredentials: true
 })
 const useAxiosSecure = () => {

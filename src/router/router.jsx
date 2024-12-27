@@ -36,7 +36,7 @@ import Jobs from "../pages/Jobs";
 			element: <PrivateRoute>
 				<JobDetails></JobDetails>
 			</PrivateRoute>,
-			loader: ({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
+			loader: ({params})=> fetch(`https://milestone-11-job-portal-server.vercel.app/jobs/${params.id}`)
 		},
 		{
 			path: '/jobApply/:id',
@@ -65,7 +65,7 @@ import Jobs from "../pages/Jobs";
 			element: <PrivateRoute>
 				<ViewApplications></ViewApplications>
 			</PrivateRoute>,
-			loader: ({params})=> fetch(`http://localhost:5000/job-applications/jobs/${params.job_id}`)
+			loader: ({params})=> fetch(`https://milestone-11-job-portal-server.vercel.app/job-applications/jobs/${params.job_id}`)
 		},
 		{
 			path: '/register',

@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar bg-gradient-to-bl from-sky-200 to-slate-200 rounded-b-lg shadow-lg">
+      <div className="navbar bg-gradient-to-bl from-sky-200 to-slate-200 rounded-b-lg shadow-lg ">
         <div className="navbar-start">
           <div className="dropdown">
             <div

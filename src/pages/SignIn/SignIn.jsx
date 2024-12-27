@@ -29,7 +29,7 @@ const SignIn = () => {
 			.then(result =>{
 				console.log('sign in user', result.user.email);
 				const user = {email: result.user.email};
-				axios.post('http://localhost:5000/jwt', user, {
+				axios.post('https://milestone-11-job-portal-server.vercel.app/jwt', user, {
 					withCredentials: true
 				})
 					.then(res =>{
